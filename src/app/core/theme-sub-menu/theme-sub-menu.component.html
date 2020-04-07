@@ -1,0 +1,15 @@
+<div class="container-fluid dashboard-theme-container" >
+    <div class="header">
+        <h2>Edit Messages</h2>
+        <div class="btn-group pull-right">
+            <a href="#" routerLink="/message-centre" class="btn btn-outline btn-primary" id="backBtn">Back to List</a>
+            <a routerLink="/message/new" class="ml-2 btn btn-primary btn-outline">New Message</a>
+        </div>
+    </div>
+    <div class="pt-3 router-style">
+        <ul class="list-inline">
+            <li class="list-inline-item"><a routerLink="/messages"  [queryParams]="{ type: 'Published'}" routerLinkActive="active">{{'published' | uppercase }}</a></li>
+            <li class="list-inline-item"><a routerLink="/messages" [queryParams]="{ type: 'Drafts'}" routerLinkActive="active">{{'drafts' | uppercase }}</a></li>
+        </ul>
+    </div>
+</div>

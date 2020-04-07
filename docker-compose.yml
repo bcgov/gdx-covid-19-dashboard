@@ -1,0 +1,21 @@
+version: '3'
+services:
+  news-dashboard:
+    container_name: news-dashboard
+    image: news-dashboard
+    environment:
+      - API_URL=${API_URL}
+      - IpFilterRules=${IpFilterRules}
+      - RealIpFrom=${RealIpFrom}
+    depends_on:
+      - hub-api
+    ports:
+      - '8080:8080'
+  hub-api:
+    container_name: hub-api
+    image: hub-api
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Production
+      - HubDbContext=%HubDBContextEnvVar%
+    ports:
+    - '8081:8080'
