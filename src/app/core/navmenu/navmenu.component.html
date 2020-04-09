@@ -9,10 +9,10 @@
         <a routerLink="/"><h4>BC Gov News</h4></a>
       </div>
       <div class="ml-auto">
-        <div class="nav-item" *ngIf="!isLoggedIn | async">
+        <!-- <div class="nav-item" *ngIf="!isLoggedIn | async">
           <a class="btn btn-link" (click.preventDefault)="login()" href="#">Sign In</a>
-        </div>
-        <div class="nav-item" *ngIf="isLoggedIn | async">
+        </div> -->
+        <!-- <div class="nav-item" *ngIf="isLoggedIn | async">
           <div ngbDropdown class="image" placement="bottom-right">
               <div class="user-image" id="profile-menu" ngbDropdownToggle [ngStyle]="{'background-color': getColor(firstLetter)}">{{firstLetter}}</div>
 
@@ -37,17 +37,17 @@
                     </li>
                     <div class="dropdown-divider"></div>
                   </div>
-                  <!-- <a href="#">Subscriptions</a> -->
+                   <a href="#">Subscriptions</a>
                   <li class="list-inline-item dropdown-item">
                     <a routerLink="/account-settings" class="btn-nav">Account Settings</a>
                   </li>
-                  <!-- <li class="list-inline-item dropdown-item">
+                  <li class="list-inline-item dropdown-item">
                     <a (click)="logout()" href="#" class="btn-nav">Sign out</a>
-                  </li> -->
+                  </li>
                 </ul>
               </div>
           </div>
-        </div>
+        </div> -->
       </div>
       <!-- Disabled for MVP -->
       <!-- <div class="ml-auto pr-2"><i class="fa fa-search"></i></div>

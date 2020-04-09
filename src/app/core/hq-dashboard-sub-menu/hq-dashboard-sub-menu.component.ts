@@ -21,18 +21,18 @@ export class HqDashboardSubMenuComponent implements OnInit {
   constructor(private router: Router, private activatedRoute: ActivatedRoute) {}
 
   ngOnInit() {
-    this.currentUrl = this.router.url;
-    if (this.activatedRoute.queryParams) {
-      this.activatedRoute.queryParams.subscribe((queryParams: any) => {
-        this.filterBySocialMediaType = queryParams.type || 'All';
-        this.filterPostsByUserMinistries = queryParams.ministries || 'All';
-        this.filterActivitiesByUserMinistries = queryParams.ministries || 'All';
-      });
-    }
+    // this.currentUrl = this.router.url;
+    // if (this.activatedRoute.queryParams) {
+    //   this.activatedRoute.queryParams.subscribe((queryParams: any) => {
+    //     this.filterBySocialMediaType = queryParams.type || 'All';
+    //     this.filterPostsByUserMinistries = queryParams.ministries || 'All';
+    //     this.filterActivitiesByUserMinistries = queryParams.ministries || 'All';
+    //   });
+    // }
   }
 
   updateSocialMediaType(newType: string) {
-    this.filterBySocialMediaType = newType;
+    // this.filterBySocialMediaType = newType;
   }
 
   print() {

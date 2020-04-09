@@ -36,7 +36,7 @@ export class PostListComponent implements OnInit, AfterViewInit, OnDestroy {
   private timer: Observable<any>;
   private fbEvents: Observable<any>;
 
-  isLoading = true;
+  isLoading = false;
   internetExplorer = false;
   isMobile = false;
 
@@ -46,134 +46,135 @@ export class PostListComponent implements OnInit, AfterViewInit, OnDestroy {
     private appConfig: AppConfigService,
     private alerts: AlertsService,
     private utils: UtilsService,
-    private ministriesProvider: MinistriesProvider,
+    // private ministriesProvider: MinistriesProvider,
     private sanitizer: DomSanitizer,
     private snowplowService: SnowplowService,
     public renderer: Renderer2,
     private socialMediaRenderService: SocialMediaRenderService,
     private browserService: BrowserInfoService) {
-      this.BASE_NEWS_URL = this.appConfig.config.NEWS_URL;
-      this.router.routeReuseStrategy.shouldReuseRoute = () => false;
-      this.resizeListener = this.renderer.listen('window', 'resize', (event) => {
-        this.setTimer();
-      });
+      // this.BASE_NEWS_URL = this.appConfig.config.NEWS_URL;
+      // this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+      // this.resizeListener = this.renderer.listen('window', 'resize', (event) => {
+      //   this.setTimer();
+      // });
   }
 
   ngOnInit() {
-    this.route.data.subscribe(data => {
-      if (typeof data['posts'] === 'undefined' || data['posts'] === null) {
-        this.alerts.showError('An error occurred while retrieving posts');
-        return;
-      }
-      let hasFacebookAssets = false;
-      let hasYoutubeAssets = false;
-      data['posts'].forEach(p => {
-        if (p.assetUrl.indexOf('facebook') >= 0) {
-          (<any>p).fbAssetClass = SocialMediaType.getFacebookClass(p.assetUrl);
-          hasFacebookAssets = true;
-        }
-        if (p.assetUrl.indexOf('youtube') >= 0) {
-          (<any>p).youtubeId = this.extractVideoID(p.assetUrl);
-          hasYoutubeAssets = true;
-        }
-      });
-      this.posts = data['posts'];
-      if (this.hasFacebookAssets) {
-        this.socialMediaRenderService.initFacebook();
-      }
-      if (typeof data['userMinistries'] === 'undefined' || data['userMinistries'] === null) {
-        this.alerts.showError('An error occurred while retrieving your ministries');
-        return;
-      }
+    // this.route.data.subscribe(data => {
+    //   if (typeof data['posts'] === 'undefined' || data['posts'] === null) {
+    //     this.alerts.showError('An error occurred while retrieving posts');
+    //     return;
+    //   }
+    //   let hasFacebookAssets = false;
+    //   let hasYoutubeAssets = false;
+    //   data['posts'].forEach(p => {
+    //     if (p.assetUrl.indexOf('facebook') >= 0) {
+    //       (<any>p).fbAssetClass = SocialMediaType.getFacebookClass(p.assetUrl);
+    //       hasFacebookAssets = true;
+    //     }
+    //     if (p.assetUrl.indexOf('youtube') >= 0) {
+    //       (<any>p).youtubeId = this.extractVideoID(p.assetUrl);
+    //       hasYoutubeAssets = true;
+    //     }
+    //   });
+    //   this.posts = data['posts'];
+    //   if (this.hasFacebookAssets) {
+    //     this.socialMediaRenderService.initFacebook();
+    //   }
+    //   if (typeof data['userMinistries'] === 'undefined' || data['userMinistries'] === null) {
+    //     this.alerts.showError('An error occurred while retrieving your ministries');
+    //     return;
+    //   }
 
-      this.userMinistriesForFilteringPosts = data['userMinistries'];
+    //   this.userMinistriesForFilteringPosts = data['userMinistries'];
 
-      this.route.queryParams.subscribe((queryParams: any) => {
-        if (!queryParams.ministries || queryParams.ministries === 'All') {
-          this.selectedPosts = this.posts;
-        } else {
-            this.selectedPosts = this.posts.filter(p => {
+    //   this.route.queryParams.subscribe((queryParams: any) => {
+    //     if (!queryParams.ministries || queryParams.ministries === 'All') {
+    //       this.selectedPosts = this.posts;
+    //     } else {
+    //         this.selectedPosts = this.posts.filter(p => {
 
-              const postMinistries: Array<string> = [];
-              p.ministries.forEach((val, idx, arr) => {
-                postMinistries.push(this.ministriesProvider.getMinistry(val).key);
-              });
+    //           const postMinistries: Array<string> = [];
+    //           p.ministries.forEach((val, idx, arr) => {
+    //             postMinistries.push(this.ministriesProvider.getMinistry(val).key);
+    //           });
 
-              return this.utils.includes(this.userMinistriesForFilteringPosts, p.leadMinistryKey)
-                || this.utils.intersection(this.userMinistriesForFilteringPosts, postMinistries).length > 0;
-            });
-        }
-        this.filterBySocialMediaType = queryParams.type;
-      });
-    });
-    this.internetExplorer = this.browserService.getBrowser();
-    this.isMobile = this.browserService.isMobile();
-    this.snowplowService.trackPageView();
-    if (this.internetExplorer) {
-      this.alerts.cancelable = true;
-      this.alerts.showInfo(this.browserService.getIEDisclaimer());
-    }
+    //           return this.utils.includes(this.userMinistriesForFilteringPosts, p.leadMinistryKey)
+    //             || this.utils.intersection(this.userMinistriesForFilteringPosts, postMinistries).length > 0;
+    //         });
+    //     }
+    //     this.filterBySocialMediaType = queryParams.type;
+    //   });
+    // });
+    // this.internetExplorer = this.browserService.getBrowser();
+    // this.isMobile = this.browserService.isMobile();
+    // this.snowplowService.trackPageView();
+    // if (this.internetExplorer) {
+    //   this.alerts.cancelable = true;
+    //   this.alerts.showInfo(this.browserService.getIEDisclaimer());
+    // }
   }
 
   ngAfterViewInit() {
-    if (this.selectedPosts.length > 0 && !this.isMobile && !this.internetExplorer) {
-      this.setTimer();
-    }
-    if (this.isMobile || this.internetExplorer || this.selectedPosts.length === 0) {
-      this.isLoading = false;
-    }
+    // if (this.selectedPosts.length > 0 && !this.isMobile && !this.internetExplorer) {
+    //   this.setTimer();
+    // }
+    // if (this.isMobile || this.internetExplorer || this.selectedPosts.length === 0) {
+    //   this.isLoading = false;
+    // }
   }
 
   ngOnDestroy() {
-    this.resizeListener();
-    if ( this.subscription && this.subscription instanceof Subscription) {
-      this.subscription.unsubscribe();
-    }
-    if ( this.fbEvents && this.fbEvents instanceof Subscription) {
-      this.fbEvents.unsubscribe();
-    }
+    // this.resizeListener();
+    // if ( this.subscription && this.subscription instanceof Subscription) {
+    //   this.subscription.unsubscribe();
+    // }
+    // if ( this.fbEvents && this.fbEvents instanceof Subscription) {
+    //   this.fbEvents.unsubscribe();
+    // }
   }
 
   extractVideoID( url: string ): string {
-    const regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#\&\?]*).*/;
-    const match = url.match(regExp);
-    if ( match && match[7].length === 11 ) {
-        return match[7];
-    } else {
-        return '';
-    }
+    // const regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#\&\?]*).*/;
+    // const match = url.match(regExp);
+    // if ( match && match[7].length === 11 ) {
+    //     return match[7];
+    // } else {
+    //     return '';
+    // }
+    return '';
   }
 
   videoURL( item: any ) {
-    return this.sanitizer.bypassSecurityTrustResourceUrl('https://www.youtube.com/embed/' + item.youtubeId);
+    // return this.sanitizer.bypassSecurityTrustResourceUrl('https://www.youtube.com/embed/' + item.youtubeId);
   }
 
   public toggleFacebookPosts(visible: boolean) {
-    const posts = document.getElementById(PostListDivId).getElementsByTagName('iframe');
-    Array.from(posts).forEach(function(item) {
-      setTimeout(function() {
-        item.style.visibility = visible ? 'visible' : 'hidden';
-      }, 100);
-    });
+    // const posts = document.getElementById(PostListDivId).getElementsByTagName('iframe');
+    // Array.from(posts).forEach(function(item) {
+    //   setTimeout(function() {
+    //     item.style.visibility = visible ? 'visible' : 'hidden';
+    //   }, 100);
+    // });
   }
 
   setTimer() {
-    this.isLoading = true;
-    const post_list = document.getElementById(PostListDivId);
-    post_list.style.visibility = 'hidden';
-    if (this.hasFacebookAssets) {
-     this.socialMediaRenderService.loadFacebookWidgesbyNodeId(PostListDivId, true);
-    }
+    // this.isLoading = true;
+    // const post_list = document.getElementById(PostListDivId);
+    // post_list.style.visibility = 'hidden';
+    // if (this.hasFacebookAssets) {
+    //  this.socialMediaRenderService.loadFacebookWidgesbyNodeId(PostListDivId, true);
+    // }
 
-    this.timer = Observable.timer(4000); // 4000 millisecond means 4 seconds
-    this.subscription = this.timer.subscribe(() => {
-      resizeAllGridItems(PostListDivId, true);
-      this.isLoading = false;
-      post_list.style.visibility = 'visible';
-      if (this.hasFacebookAssets) {
-        this.socialMediaRenderService.toggleIframePosts(PostListDivId, true);
-        this.toggleFacebookPosts(true);
-      }
-    });
+    // this.timer = Observable.timer(4000); // 4000 millisecond means 4 seconds
+    // this.subscription = this.timer.subscribe(() => {
+    //   resizeAllGridItems(PostListDivId, true);
+    //   this.isLoading = false;
+    //   post_list.style.visibility = 'visible';
+    //   if (this.hasFacebookAssets) {
+    //     this.socialMediaRenderService.toggleIframePosts(PostListDivId, true);
+    //     this.toggleFacebookPosts(true);
+    //   }
+    // });
   }
 }

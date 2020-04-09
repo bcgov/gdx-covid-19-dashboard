@@ -36,44 +36,44 @@ export class ActivityForecastListComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.route.data.subscribe(data => {
-      if (typeof data['activities'] === 'undefined' || data['activities'] === null) {
-        this.alerts.showError('An error occurred while retrieving activities');
-        return;
-      }
+    // this.route.data.subscribe(data => {
+    //   if (typeof data['activities'] === 'undefined' || data['activities'] === null) {
+    //     this.alerts.showError('An error occurred while retrieving activities');
+    //     return;
+    //   }
 
-      if (typeof data['userMinistries'] === 'undefined' || data['userMinistries'] === null) {
-        this.alerts.showError('An error occurred while retrieving your ministries');
-        return;
-      }
+    //   if (typeof data['userMinistries'] === 'undefined' || data['userMinistries'] === null) {
+    //     this.alerts.showError('An error occurred while retrieving your ministries');
+    //     return;
+    //   }
 
-      this.activities = data['activities'];
+    //   this.activities = data['activities'];
 
-      let todayDow = this.today.getDay();
-      if (todayDow === 6) { todayDow = 0; } // group Sunday with Saturday
+    //   let todayDow = this.today.getDay();
+    //   if (todayDow === 6) { todayDow = 0; } // group Sunday with Saturday
 
 
-      data['activities'].forEach(v => {
-        this.overwriteTitleDetailsFromHqComments(v);
+    //   data['activities'].forEach(v => {
+    //     this.overwriteTitleDetailsFromHqComments(v);
 
-        v.startDateTime = new Date(v.startDateTime);
-        let dow = v.startDateTime.getDay();
-        if (dow === 6) { dow = 0; } // group Sunday with Saturday
-        this.activitiesPerDays[dow >= todayDow ? dow - todayDow : dow + 6 - todayDow].push(v);
-      });
+    //     v.startDateTime = new Date(v.startDateTime);
+    //     let dow = v.startDateTime.getDay();
+    //     if (dow === 6) { dow = 0; } // group Sunday with Saturday
+    //     this.activitiesPerDays[dow >= todayDow ? dow - todayDow : dow + 6 - todayDow].push(v);
+    //   });
 
-      this.userMinistriesForFilteringActivities = data['userMinistries'];
+    //   this.userMinistriesForFilteringActivities = data['userMinistries'];
 
-      this.route.queryParams.subscribe((queryParams: any) => {
-        if (!queryParams.ministries || queryParams.ministries === 'All') {
-          this.showingAllMinistries = true;
-        } else {
-          this.showingAllMinistries = false;
-        }
-        this.filterActivitiesByUserMinistries = queryParams.type;
-      });
-    });
-    this.snowplowService.trackPageView();
+    //   this.route.queryParams.subscribe((queryParams: any) => {
+    //     if (!queryParams.ministries || queryParams.ministries === 'All') {
+    //       this.showingAllMinistries = true;
+    //     } else {
+    //       this.showingAllMinistries = false;
+    //     }
+    //     this.filterActivitiesByUserMinistries = queryParams.type;
+    //   });
+    // });
+    // this.snowplowService.trackPageView();
   }
 
   showActivity(contactMinistryKey: string): boolean {

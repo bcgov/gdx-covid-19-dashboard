@@ -33,13 +33,13 @@ export class AddSocialMediaPostComponent implements OnInit {
     private alerts: AlertsService,
     private nav: NavmenuService,
     private socialMediaRenderService: SocialMediaRenderService,
-    private snowplowService: SnowplowService ) {
+    private snowplowService: SnowplowService) {
     this.createForm();
   }
 
   ngOnInit() {
     this.nav.hide();
-    this.snowplowService.trackPageView();
+    // this.snowplowService.trackPageView();
   }
 
   ngOnDestroy(): void {
@@ -56,7 +56,7 @@ export class AddSocialMediaPostComponent implements OnInit {
   }
 
   submitForm() {
-    this.socialMediaService.addSocialMediaPost({url: this.addSocialMediaPostForm.value.url, sortOrder: 1}).subscribe(
+    this.socialMediaService.addSocialMediaPost({ url: this.addSocialMediaPostForm.value.url, sortOrder: 1 }).subscribe(
       () => {
         this.router.navigateByUrl('/social-media-input');
       },
@@ -73,7 +73,7 @@ export class AddSocialMediaPostComponent implements OnInit {
   previewSocialMediaPost() {
     const postUrl = this.addSocialMediaPostForm.controls['url'].value;
     this.previewPost.clear();
-    this.postExt = new SocialMediaPostExtended({url: postUrl});
+    this.postExt = new SocialMediaPostExtended({ url: postUrl });
     const view = this.tpl.createEmbeddedView(null);
     this.previewPost.insert(view);
     this.cd.detectChanges();

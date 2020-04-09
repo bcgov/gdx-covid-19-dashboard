@@ -6,13 +6,13 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 // tslint:disable-next-line:import-spacing
-import { NavMenuComponent } from  './core/navmenu/navmenu.component';
+import { NavMenuComponent } from './core/navmenu/navmenu.component';
 import { PostListComponent } from './posts/post-list/post-list.component';
 import { FooterComponent } from './core/footer/footer.component';
 import { ActivityForecastListComponent } from './activities/activity-list/activity-forecast-list.component';
 import { ActivityListResolver } from './_resolvers/activity-list.resolver';
 import { PostListResolver } from './_resolvers/post-list.resolver';
-import { AuthService } from './_auth/auth.service';
+// import { AuthService } from './_auth/auth.service';
 import { MessagesService } from './services/messages.service';
 import { ThemesOfWeekComponent } from './themes/themes-of-week/themes-of-week.component';
 import { MessageListResolver } from './_resolvers/message-list.resolver';
@@ -50,8 +50,8 @@ import { GcpeSharedModule } from '../../projects/gcpe-shared/src/public_api';
 import { UserMinistryListResolver } from './_resolvers/user-ministry-list.resolver';
 import { UserPreferencesService } from './services/userPreferences.service';
 import { OAuthModule, OAuthService } from 'angular-oauth2-oidc';
-import { AuthProviderFactory } from './_auth/auth-provider-factory';
-import { AuthProvider } from './_auth/auth-provider.service';
+// import { AuthProviderFactory } from './_auth/auth-provider-factory';
+// import { AuthProvider } from './_auth/auth-provider.service';
 import { HomeComponent } from './home/home.component';
 import { UtilsService } from './services/utils.service';
 import { MinistriesProvider } from './_providers/ministries.provider';
@@ -60,20 +60,20 @@ import { DatePipe } from '@angular/common';
 
 const appInitializerFn = (appConfig: AppConfigService) => {
   return () => {
-      return appConfig.loadAppConfig();
+    return appConfig.loadAppConfig();
   };
 };
 
-export function ministriesProviderFactory(provider: MinistriesProvider) {
-  return () => provider.load();
-}
+// export function ministriesProviderFactory(provider: MinistriesProvider) {
+//   return () => provider.load();
+// }
 
 // tslint:disable-next-line: use-pipe-transform-interface
 @Pipe({
   name: 'timeAgo',
   pure: false
 })
-export class TimeAgoExtendsPipe extends TimeAgoPipe {}
+export class TimeAgoExtendsPipe extends TimeAgoPipe { }
 
 @NgModule({
   declarations: [
@@ -115,7 +115,7 @@ export class TimeAgoExtendsPipe extends TimeAgoPipe {}
     GcpeSharedModule,
     NgbModule.forRoot(),
     ReactiveFormsModule,
-    OAuthModule.forRoot(),
+    // OAuthModule.forRoot(),
   ],
   providers: [
     AppConfigService,
@@ -125,18 +125,18 @@ export class TimeAgoExtendsPipe extends TimeAgoPipe {}
       multi: true,
       deps: [AppConfigService]
     },
-    MinistriesProvider,
-    {
-      provide: APP_INITIALIZER,
-      useFactory: ministriesProviderFactory,
-      deps: [MinistriesProvider],
-      multi: true
-    },
+    // MinistriesProvider,
+    // {
+    //   provide: APP_INITIALIZER,
+    //   useFactory: ministriesProviderFactory,
+    //   deps: [MinistriesProvider],
+    //   multi: true
+    // },
     DatePipe,
     // Services
-    { provide: AuthProvider, useFactory: AuthProviderFactory, deps: [AppConfigService, OAuthService] },
+    // { provide: AuthProvider, useFactory: AuthProviderFactory, deps: [AppConfigService, OAuthService] },
     ActivitiesService,
-    AuthService,
+    // AuthService,
     MessagesService,
     MinistriesService,
     SocialMediaPostsService,

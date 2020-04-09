@@ -11,13 +11,14 @@ import { Router } from '@angular/router';
 export class HomeComponent implements OnInit {
 
   constructor(private authService: AuthService, private alerts: AlertsService, private router: Router) {
-    this.authService.currentUser.subscribe((user) => {
-      if(user.user_roles.length < 1) {
-        this.alerts.showError('You do not have the proper role to view this application', false);
-      } else {
-        this.router.navigate(['/last-7-day-post-list']);
-      }
-    });
+    // this.authService.currentUser.subscribe((user) => {
+    //   if(user.user_roles.length < 1) {
+    //     this.alerts.showError('You do not have the proper role to view this application', false);
+    //   } else {
+    //     this.router.navigate(['/last-7-day-post-list']);
+    //   }
+    // });
+    this.router.navigate(['/last-7-day-post-list']);
   }
 
   ngOnInit() {

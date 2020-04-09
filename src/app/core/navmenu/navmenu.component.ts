@@ -13,7 +13,7 @@ export class NavMenuComponent implements OnInit {
   isCollapsed = true;
   visible = true;
   firstLetter: String = 'A';
-  isLoggedIn: boolean|Observable<boolean>;
+  isLoggedIn: boolean | Observable<boolean>;
 
   constructor(private authService: AuthService, public nav: NavmenuService) {
     this.isLoggedIn = authService.isLoggedIn();
@@ -38,10 +38,10 @@ export class NavMenuComponent implements OnInit {
   }
 
   login() {
-    this.authService.login();
+    // this.authService.login();
   }
 
   logout() {
-    this.authService.logout();
+    // this.authService.logout();
   }
 }

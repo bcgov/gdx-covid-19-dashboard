@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AlertsService } from './services/alerts.service';
 import { Event, Router, NavigationStart, NavigationEnd, NavigationCancel, NavigationError } from '@angular/router';
-import { AuthService } from './_auth/auth.service';
+// import { AuthService } from './_auth/auth.service';
 import { BehaviorSubject } from 'rxjs';
 import { Configuration } from './configuration';
 
@@ -13,20 +13,21 @@ import { Configuration } from './configuration';
 
 export class AppComponent implements OnInit {
   title = 'BC Gov News';
-  public isLoading = new BehaviorSubject<boolean>(true);
+  public isLoading = new BehaviorSubject<boolean>(false);
 
-  constructor(private alerts: AlertsService, private router: Router, private auth: AuthService, private conf: Configuration) {
+  constructor(private alerts: AlertsService, private router: Router, /*private auth: AuthService*/private conf: Configuration) {
     this.router.events.subscribe((event: Event) => {
       this.navigationInterceptor(event);
     });
   }
 
   ngOnInit() {
-    this.auth.isLoggingInSubject.subscribe((isLoggingIn) => {
-      if (!isLoggingIn) {
-        this.router.initialNavigation();
-      }
-    });
+    // this.auth.isLoggingInSubject.subscribe((isLoggingIn) => {
+    //   if (!isLoggingIn) {
+    //     this.router.initialNavigation();
+    //   }
+    // });
+    this.router.initialNavigation();
   }
 
   clearAlerts() {

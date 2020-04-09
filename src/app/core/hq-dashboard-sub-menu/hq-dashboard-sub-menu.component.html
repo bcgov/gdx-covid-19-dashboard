@@ -1,25 +1,25 @@
-<div class="dashboard-sub-menu-container" >
-    <h2>Dashboard</h2>
+<div class="dashboard-sub-menu-container">
+    <h2>COVID-19 Dashboard</h2>
     <div class="button-group pull-right">
         <div *ngIf="currentUrl === '/themes-of-the-week'" class="new-theme-button mr-2 d-inline-block">
-            <a *appHasRole="['Contributor']" routerLink="/theme/new" class="btn btn-primary btn-outline doNotPrint">New Theme</a>
+            <!-- <a *appHasRole="['Contributor']" routerLink="/theme/new" class="btn btn-primary btn-outline doNotPrint">New Theme</a> -->
         </div>
-        <button class="btn btn-primary btn-outline btn-print doNotPrint" (click)="print()" *ngIf="!socialmediatypes"><i class="fa fa-print fa-lg"></i> Print</button>
+        <!-- <button class="btn btn-primary btn-outline btn-print doNotPrint" (click)="print()" *ngIf="!socialmediatypes"><i class="fa fa-print fa-lg"></i> Print</button> -->
     </div>
     <p class="lighter-font hq-dashboard-info">
-        The most important news you should be aware of.
+        The most important COVID-19 news you should be aware of.
     </p>
-    <div *appHasRole="['Contributor', 'Viewer']" class="pt-3 router-style">
+    <div class="pt-3 router-style">
         <ul class="list-inline subnav-list">
             <li id="submenu-open-button" class="open pull-right" (click)="toggleSubmenu()">
                 <i class="fa" [ngClass]="{'fa-angle-down': !submenuOpen, 'fa-angle-up': submenuOpen}"></i>
             </li>
-            <li class="list-inline-item" (click)="toggleSubmenu()" [ngClass]="{'open': submenuOpen}"><a routerLink="/last-7-day-post-list" routerLinkActive="active">{{'last 7 days' | uppercase}}</a></li>
-            <li class="list-inline-item" (click)="toggleSubmenu()" [ngClass]="{'open': submenuOpen}"><a routerLink="/next-7-day-activity-list" routerLinkActive="active">{{'7 day forecast' | uppercase}}</a></li>
+            <li class="list-inline-item" (click)="toggleSubmenu()" [ngClass]="{'open': submenuOpen}"><a routerLink="/last-7-day-post-list" routerLinkActive="active">{{'Tab 1' | uppercase}}</a></li>
+            <li class="list-inline-item" (click)="toggleSubmenu()" [ngClass]="{'open': submenuOpen}"><a routerLink="/next-7-day-activity-list" routerLinkActive="active">{{'Tab 2' | uppercase}}</a></li>
             <!-- <li class="list-inline-item" (click)="toggleSubmenu()" [ngClass]="{'open': submenuOpen}"><a routerLink="/message-centre" routerLinkActive="active">{{'message centre' | uppercase}}</a></li> -->
-            <li class="list-inline-item" (click)="toggleSubmenu()" [ngClass]="{'open': submenuOpen}"><a routerLink="/social-media-list" routeLinkActiveOptions="{exact: false}" routerLinkActive="active">{{'social media' | uppercase}}</a></li>
+            <li class="list-inline-item" (click)="toggleSubmenu()" [ngClass]="{'open': submenuOpen}"><a routerLink="/social-media-list" routeLinkActiveOptions="{exact: false}" routerLinkActive="active">{{'Tab 3' | uppercase}}</a></li>
 
-            <li id="social-media-filter" class="list-inline-item ml-auto open" *ngIf="socialmediatypes">
+            <!-- <li id="social-media-filter" class="list-inline-item ml-auto open" *ngIf="socialmediatypes">
                 <div ngbDropdown placement="bottom-right" id="social-media-filter-dropdown-menu">
                     <a class="btn-link" id="dropdown-social-media-filter" ngbDropdownToggle>{{filterBySocialMediaType}} <i class="fa fa-angle-down" aria-hidden="true"></i></a>
                     <div ngbDropdownMenu aria-labelledby="dropdown-social-media-filter">
@@ -35,9 +35,9 @@
                         </ul>
                     </div>
                 </div>
-            </li>
+            </li> -->
 
-            <li id="user-ministry-filter" class="list-inline-item ml-auto open" *ngIf="userMinistriesForFilteringPosts">
+            <!-- <li id="user-ministry-filter" class="list-inline-item ml-auto open" *ngIf="userMinistriesForFilteringPosts">
                 <div ngbDropdown placement="bottom-right" id="user-ministry-filter-dropdown-menu">
                     <a class="btn-link" id="dropdown-user-ministry-filter" ngbDropdownToggle>{{filterPostsByUserMinistries}} <i class="fa fa-angle-down" aria-hidden="true"></i></a>
                     <div ngbDropdownMenu aria-labelledby="dropdown-user-ministry-filter">
@@ -53,9 +53,9 @@
                         </ul>
                     </div>
                 </div>
-            </li>
-            <p class="disclaimer" *ngIf="currentUrl === '/next-7-day-activity-list'">Some of the information below may be confidential and is subject to change.</p>
-            <li id="user-ministry-filter" class="list-inline-item ml-auto open" *ngIf="userMinistriesForFilteringActivities">
+            </li> -->
+            <!-- <p class="disclaimer" *ngIf="currentUrl === '/next-7-day-activity-list'">Some of the information below may be confidential and is subject to change.</p> -->
+            <!-- <li id="user-ministry-filter" class="list-inline-item ml-auto open" *ngIf="userMinistriesForFilteringActivities">
                 <div ngbDropdown placement="bottom-right" id="user-ministry-filter-dropdown-menu">
                     <a class="btn-link" id="dropdown-user-ministry-filter" ngbDropdownToggle>{{filterActivitiesByUserMinistries}} <i class="fa fa-angle-down" aria-hidden="true"></i></a>
                     <div ngbDropdownMenu aria-labelledby="dropdown-user-ministry-filter">
@@ -71,7 +71,7 @@
                         </ul>
                     </div>
                 </div>
-            </li>
+            </li> -->
         </ul>
     </div>
 </div>

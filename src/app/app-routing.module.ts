@@ -23,41 +23,41 @@ import { HqDashboardSubMenuComponent } from './core/hq-dashboard-sub-menu/hq-das
 import { HomeComponent } from './home/home.component';
 
 const appRoutes: Routes = [
-  { path: 'account-settings', component: AccountSettingsComponent, resolve: { ministries: MinistriesResolver } },
+  /*{ path: 'account-settings', component: AccountSettingsComponent, resolve: { ministries: MinistriesResolver } },*/
   {
     path: 'last-7-day-post-list',
     component: PostListComponent,
-    resolve: { posts: PostListResolver, userMinistries: UserMinistryListResolver },
+  // resolve: { posts: PostListResolver, /*userMinistries: UserMinistryListResolver*/ },
   },
   {
     path: 'next-7-day-activity-list',
     component: ActivityForecastListComponent,
     resolve: {
-      activities: ActivityListResolver,
-      userMinistries: UserMinistryListResolver
+      // activities: ActivityListResolver,
+      // userMinistries: UserMinistryListResolver
     },
-    canActivate: [AuthGuard, RoleGuard],
+    // canActivate: [AuthGuard, RoleGuard],
     data: {
-      roles: ['Viewer', 'Contributor']
+      // roles: ['Viewer', 'Contributor']
     }
   },
   {
     path: 'message-centre',
     runGuardsAndResolvers: 'always',
     component: ThemesOfWeekComponent,
-    resolve: { themes: MessageListResolver },
-    canActivate: [AuthGuard, RoleGuard],
+    // resolve: { themes: MessageListResolver },
+    // canActivate: [AuthGuard, RoleGuard],
     data: {
-      roles: ['Viewer', 'Contributor']
+     // roles: ['Viewer', 'Contributor']
     }
   },
   {
     path: 'social-media-list',
     component: SocialMediaPostListComponent,
-    resolve: { socialmedia: SociaMediaPostListResolver, socialmediatype: SociaMediaTypeListResolver },
-    canActivate: [AuthGuard, RoleGuard],
+    // resolve: { socialmedia: SociaMediaPostListResolver, socialmediatype: SociaMediaTypeListResolver },
+    // canActivate: [AuthGuard, RoleGuard],
     data: {
-      roles: ['Viewer', 'Contributor']
+      // roles: ['Viewer', 'Contributor']
     },
     runGuardsAndResolvers: 'always'
   },
@@ -65,47 +65,47 @@ const appRoutes: Routes = [
     path: 'social-media-input',
     component: SocialMediaInputComponent,
     resolve: { socialmedia: SociaMediaPostListResolver },
-    canActivate: [AuthGuard, RoleGuard],
+    // canActivate: [AuthGuard, RoleGuard],
     data: {
-      roles: ['Contributor']
+      // roles: ['Contributor']
     },
     runGuardsAndResolvers: 'always'
   },
   {
     path: 'social-media/new',
     component: AddSocialMediaPostComponent,
-    canActivate: [AuthGuard, RoleGuard],
+    // canActivate: [AuthGuard, RoleGuard],
     data: {
-      roles: ['Contributor']
+      // roles: ['Contributor']
     },
     runGuardsAndResolvers: 'always'
   },
   {
     path: 'messages',
     component: ThemeListComponent,
-    canActivate: [AuthGuard, RoleGuard],
+    // canActivate: [AuthGuard, RoleGuard],
     data: {
-      roles: ['Contributor']
+      // roles: ['Contributor']
     },
-    resolve: { themelist: MessageListResolver },
+    // resolve: { themelist: MessageListResolver },
     runGuardsAndResolvers: 'paramsOrQueryParamsChange'
   },
   {
     path: 'message/new',
     component: ThemeFormComponent,
-    canActivate: [AuthGuard, RoleGuard],
+    // canActivate: [AuthGuard, RoleGuard],
     data: {
-      roles: ['Contributor']
+      // roles: ['Contributor']
     }
   },
   {
     path: 'message/edit/:id',
     component: ThemeFormComponent,
-    canActivate: [AuthGuard, RoleGuard],
+    // canActivate: [AuthGuard, RoleGuard],
     data: {
-      roles: ['Contributor']
+      // roles: ['Contributor']
     },
-    resolve: { theme: MessageResolver }
+    // resolve: { theme: MessageResolver }
   },
   {
     path: '',

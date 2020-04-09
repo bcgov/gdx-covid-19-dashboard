@@ -21,14 +21,14 @@ export class ThemesOfWeekComponent implements OnInit {
     private snowplowService: SnowplowService) { }
 
   ngOnInit() {
-    this.route.data.subscribe(data => {
-      if(typeof data['themes'] === 'undefined' || data['themes'] === null) {
-        this.alerts.showError('An error occurred while retrieving messages');
-        return;
-      };
-      this.themes = data['themes'].filter((theme) => !theme.isHighlighted && theme.isPublished);
-      this.highlightedTheme = data['themes'].find((theme) => theme.isHighlighted && theme.isPublished);
-    });
-    this.snowplowService.trackPageView();
+    // this.route.data.subscribe(data => {
+    //   if(typeof data['themes'] === 'undefined' || data['themes'] === null) {
+    //     this.alerts.showError('An error occurred while retrieving messages');
+    //     return;
+    //   };
+    //   this.themes = data['themes'].filter((theme) => !theme.isHighlighted && theme.isPublished);
+    //   this.highlightedTheme = data['themes'].find((theme) => theme.isHighlighted && theme.isPublished);
+    // });
+    // this.snowplowService.trackPageView();
   }
 }
