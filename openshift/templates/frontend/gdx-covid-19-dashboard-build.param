@@ -1,0 +1,16 @@
+#=========================================================
+# OpenShift template parameters for:
+# Component: .
+# Template File: ../openshift/templates/frontend/gdx-covid-19-dashboard-build.yaml
+#=========================================================
+NAME=gdx-covid-19-dashboard
+BUILDER_IMAGE=frontend-yarn-builder
+CI_BUILD=true
+RUNTIME_IMAGE=frontend-nginx-runtime
+GIT_REPO_URL=https://github.com/bcgov/gdx-covid-19-dashboard.git
+GIT_REF=master
+SOURCE_CONTEXT_DIR=
+CPU_LIMIT=1
+MEMORY_LIMIT=4Gi
+CPU_REQUEST=1
+MEMORY_REQUEST=2Gi

@@ -1,5 +1,5 @@
-export PROJECT_NAMESPACE=${PROJECT_NAMESPACE:-ntu9uh}
-export GIT_URI=${GIT_URI:-"https://github.com/bcgov/gcpe-news-dashboard.git"}
+export PROJECT_NAMESPACE=${PROJECT_NAMESPACE:-empqzi}
+export GIT_URI=${GIT_URI:-"https://github.com/bcgov/gdx-covid-19-dashboard.git"}
 export GIT_REF=${GIT_REF:-"master"}
 
 # The project components
@@ -15,7 +15,7 @@ export skip_git_overrides=""
 export builds=${builds:-""}
 
 # The images to be tagged after build
-export images=${images:-"news-dashboard-static"}
+export images=${images:-"gdx-covid-19-dashboard-static"}
 
 # The routes for the project
-export routes=${routes:-"news-dashboard"}
+export routes=${routes:-"gdx-covid-19-dashboard"}
