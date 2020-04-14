@@ -51,8 +51,8 @@ echo "---> Installing application dependencies"
 npm install
 
 if [ "$CI_BUILD" == "true" ]; then
-  echo "---> Running Tests and building in production mode"
-  npm run ci
+  # echo "---> Running Tests and building in production mode"
+  # npm run ci
 else
   echo "---> Building in production mode"
   npm run build
