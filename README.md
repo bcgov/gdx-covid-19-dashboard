@@ -1,4 +1,4 @@
-# GCPE News Dashboard
+# GDX COVID-19 Dashboard
 
 BC Gov News Dashboard frontend application for keeping Ministry Offices and stakeholders informed.
 This application is built with Angular 8.
