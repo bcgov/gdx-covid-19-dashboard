@@ -57,6 +57,7 @@ import { UtilsService } from './services/utils.service';
 import { MinistriesProvider } from './_providers/ministries.provider';
 import { SnowplowService } from './services/snowplow.service';
 import { DatePipe } from '@angular/common';
+import { JicUpdatesComponent } from './jic-updates/jic-updates.component';
 
 const appInitializerFn = (appConfig: AppConfigService) => {
   return () => {
@@ -104,7 +105,8 @@ export class TimeAgoExtendsPipe extends TimeAgoPipe { }
     HasRoleDirective,
     // Pipes
     TimeAgoExtendsPipe,
-    PluralizeKindPipe
+    PluralizeKindPipe,
+    JicUpdatesComponent
   ],
   imports: [
     AppRoutingModule,
