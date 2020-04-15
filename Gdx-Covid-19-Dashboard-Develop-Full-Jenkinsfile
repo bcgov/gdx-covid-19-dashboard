@@ -11,13 +11,13 @@ node('master') {
 
     stage('Build Image') {
         echo "Building..."
-        openshiftBuild bldCfg: 'news-dashboard-static', showBuildLogs: 'true'
-        openshiftTag destStream: 'news-dashboard-static', verbose: 'true', destTag: 'DEVELOP-$BUILD_ID', srcStream: 'news-dashboard-static', srcTag: 'latest'
+        openshiftBuild bldCfg: 'gdx-covid-19-dashboard-static', showBuildLogs: 'true'
+        openshiftTag destStream: 'gdx-covid-19-dashboard-static', verbose: 'true', destTag: 'DEVELOP-$BUILD_ID', srcStream: 'gdx-covid-19-dashboard-static', srcTag: 'latest'
     }
 
     stage('Deploy on Dev') {
         echo "Deploying to dev..."
-        openshiftTag destStream: 'news-dashboard-static', verbose: 'true', destTag: 'dev', srcStream: 'news-dashboard-static', srcTag: 'DEVELOP-$BUILD_ID'
+        openshiftTag destStream: 'gdx-covid-19-dashboard-static', verbose: 'true', destTag: 'dev', srcStream: 'gdx-covid-19-dashboard-static', srcTag: 'DEVELOP-$BUILD_ID'
         // Sleeping for a while to wait deployment completes
 	    sh 'sleep 1m'
     }
@@ -51,6 +51,6 @@ podTemplate(label: 'owasp-zap', name: 'owasp-zap', serviceAccount: 'jenkins', cl
 stage('Deploy on Test') {
   input "Deploying to test?"
   node('master') {
-    openshiftTag destStream: 'news-dashboard-static', verbose: 'true', destTag: 'test', srcStream: 'news-dashboard-static', srcTag: 'dev'
+    openshiftTag destStream: 'gdx-covid-19-dashboard-static', verbose: 'true', destTag: 'test', srcStream: 'gdx-covid-19-dashboard-static', srcTag: 'dev'
   }
 }
