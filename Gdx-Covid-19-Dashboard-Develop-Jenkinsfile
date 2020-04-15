@@ -1,9 +1,9 @@
 node('master') {
 
-    stage('Building builder') {
+    /*stage('Building builder') {
         echo "Building builder..."
         openshiftBuild bldCfg: 'frontend-yarn-builder', showBuildLogs: 'true', waitTime: '900000'
-    }
+    }*/
     stage('Building runtime') {
         echo "Building runtime..."
         openshiftBuild bldCfg: 'frontend-nginx-runtime', showBuildLogs: 'true', waitTime: '900000'
