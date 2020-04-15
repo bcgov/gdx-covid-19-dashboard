@@ -1,5 +1,5 @@
 node('master') {
-    stage('Code Quality') {
+    /*stage('Code Quality') {
         echo "Running SonarQube static code analysis."
         openshiftBuild bldCfg: 'frontend-sonar-master', showBuildLogs: 'true'
     }
@@ -7,7 +7,7 @@ node('master') {
     stage('Dependency Security Check') {
         echo "Running Snyk analysis of dependencies"
         openshiftBuild bldCfg: 'frontend-snyk-master', showBuildLogs: 'true'
-    }
+    }*/
 
     stage('Building builder') {
         echo "Building builder..."
