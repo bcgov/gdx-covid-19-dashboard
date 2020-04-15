@@ -18,7 +18,7 @@ export class HomeComponent implements OnInit {
     //     this.router.navigate(['/last-7-day-post-list']);
     //   }
     // });
-    this.router.navigate(['/last-7-day-post-list']);
+    this.router.navigate(['/jic-updates']);
   }
 
   ngOnInit() {
