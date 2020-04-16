@@ -58,6 +58,7 @@ import { MinistriesProvider } from './_providers/ministries.provider';
 import { SnowplowService } from './services/snowplow.service';
 import { DatePipe } from '@angular/common';
 import { JicUpdatesComponent } from './jic-updates/jic-updates.component';
+import { GeobcEmbedComponent } from './geobc-embed/geobc-embed.component';
 
 const appInitializerFn = (appConfig: AppConfigService) => {
   return () => {
@@ -106,7 +107,8 @@ export class TimeAgoExtendsPipe extends TimeAgoPipe { }
     // Pipes
     TimeAgoExtendsPipe,
     PluralizeKindPipe,
-    JicUpdatesComponent
+    JicUpdatesComponent,
+    GeobcEmbedComponent
   ],
   imports: [
     AppRoutingModule,
