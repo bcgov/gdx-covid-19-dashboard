@@ -22,12 +22,17 @@ import { MinistriesResolver } from './_resolvers/ministries.resolver';
 import { HqDashboardSubMenuComponent } from './core/hq-dashboard-sub-menu/hq-dashboard-sub-menu.component';
 import { HomeComponent } from './home/home.component';
 import { JicUpdatesComponent} from './jic-updates/jic-updates.component';
+import { GeobcEmbedComponent } from './geobc-embed/geobc-embed.component';
 
 const appRoutes: Routes = [
   {
     path: 'jic-updates',
     component: JicUpdatesComponent,
   // resolve: { posts: PostListResolver, /*userMinistries: UserMinistryListResolver*/ },
+  },
+  {
+    path: 'geobc-embed',
+    component: GeobcEmbedComponent,
   },
   /*{ path: 'account-settings', component: AccountSettingsComponent, resolve: { ministries: MinistriesResolver } },*/
   {
