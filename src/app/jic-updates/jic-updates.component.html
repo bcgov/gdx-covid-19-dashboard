@@ -1,0 +1,46 @@
+<div class="container-fluid full-width mt-5 ml-0 mr-0 pl-0 pr-0">
+  <div class="row">
+    <div class="col-lg-9">
+      <div id="new-post-list" class='card-columns' >
+        <div *ngFor="let number of [0,1,2,3,4,5,6,7,8]">
+          <div class="card">
+
+            <img class="card-img-top img-fluid" src="../../assets/images/jic-daily-updates.jpg" alt="Card image cap">
+
+            <!--
+              <img *ngIf="!post.assetUrl" class="card-img-top img-fluid" src="../../assets/images/jic-daily-updates.jpg" alt="Card image cap">
+            -->
+
+            <div class="card-body">
+              <h6  class="card-subtitle mb-2 text-muted">Emergency Preparedness</h6>
+              <h5 class="card-title"><a target="_blank" href="#">B.C. COVID-19 response update</a></h5>
+              <p class="card-text justify-content-between">
+                Total confirmed cases in B.C.: 1,336 <br/>
+                New cases since April 7, 2020: 45 <br/>
+                Hospitalized cases: 135 <br/>
+                Intensive care: 61 <br/>
+                COVID-19 related deaths: 48 <br/>
+                Recovered: 838 <br/>
+                Long term care and assisted living homes currently affected: 21 <br/>
+                Testings: 51,423 individuals have been tested as of April 7, 2020. <br/>
+              </p>
+              <p class="card-text">Apr 8, 2020</p>
+            </div>
+          </div>
+          </div>
+      </div>
+
+    </div>
+    <div class="col-lg-3">
+      <div class="embed-responsive embed-responsive-16by9" style="height:100%; border: 1px solid rgba(0, 0, 0, 0.125)">
+        <iframe class="embed-responsive-item" src="https://test.news.gov.bc.ca/tags/covid-19?embed=true" allowfullscreen>
+        </iframe>
+      </div>
+    </div>
+
+
+  </div>
+
+
+</div>
+

@@ -1,0 +1,42 @@
+@import "../../../assets/styles/variables.scss";
+
+#theme-list-container {
+    display: flex;
+}
+
+#theme-list {
+    @include media-breakpoint-down(xs) {
+        order: 1;
+    }
+}
+
+.message {
+    padding: 0.45rem 0;
+    @include media-breakpoint-down(xs) {
+        order: 2;
+    }
+}
+
+.message-header {
+    color: map-get($theme-colors, dark);
+    border-bottom: 1px solid #D3D3D3;
+    padding-bottom: 15px;
+}
+
+.message-title {
+    padding-bottom: 0.5rem;
+    padding-top: 0.875rem;
+    border-bottom: 0.0625rem solid #D3D3D3;
+}
+
+.col-4 {
+    padding-left:100px;
+    color: map-get($theme-colors, medium);
+}
+
+span.message-title-info {
+    color: #c9c9c9;
+    margin-bottom: 0.5rem;
+    font-style: italic;
+    display: block;
+}

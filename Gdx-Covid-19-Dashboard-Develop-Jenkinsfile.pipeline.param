@@ -1,0 +1,12 @@
+#=========================================================
+# OpenShift Jenkins pipeline template parameters for:
+# Jenkinsfile: ../Gdx-Covid-19-Dashboard-Develop-Jenkinsfile
+# Template File: https://raw.githubusercontent.com/BCDevOps/openshift-tools/master/provisioning/pipeline/resources/pipeline-build.json
+#=========================================================
+NAME=gdx-covid-19-dashboard-develop
+# GITHUB_WEBHOOK_SECRET=[a-zA-Z0-9]{40}
+# GENERIC_WEBHOOK_SECRET=[a-zA-Z0-9]{40}
+SOURCE_REPOSITORY_URL=https://github.com/bcgov/gdx-covid-19-dashboard.git
+SOURCE_REPOSITORY_REF=master
+CONTEXT_DIR=.
+JENKINSFILE_PATH=Gdx-Covid-19-Dashboard-Develop-Jenkinsfile
